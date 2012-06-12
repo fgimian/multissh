@@ -1,19 +1,25 @@
 # Multi-SSH
 
-Here's my little take on multiprocessing and Paramiko.  I have huge respect and admiration of projects such as [Fabric]("http://fabfile.org/") and [ansible]("http://ansible.github.com/") which were a great referenc while I was developing this library.
+Here's my little take on multiprocessing and Paramiko.  I have huge respect and admiration for projects such as [Fabric](http://fabfile.org/) and [ansible](http://ansible.github.com/) which were a great reference while I was developing this library.
 
 So the obvious question, why another library to do the same thing?  Heres where Multi-SSH stands apart:
 
 - This library is completely abstract and made to run on Cisco IOS, Unix and any other device which supports SSH.  There are no Unix-specific commands or interactions used.
-- The library allows integration with my paramiko-expect library allowing complex interactions with servers.
-- The library is made to be integrated with scripts and doesn't rely on config files or similar for storing server names.  The user is requested to perform that task themselves via JSON or similar.
+- The library allows integration with my paramiko-expect library, allowing complex interactions with servers.
+- The library is made to be integrated with scripts and doesn't rely on config files for storing server names and other information.  The user is requested to perform that task themselves via JSON or similar.
 - The library implements tailing of a file across multiple servers in one session.
 
 ## Known Issues
 
 Unfortunately, there are a few outstanding issues which require resolution:
 
-- Piping scripts into other commands and then interrupting them with Ctrl+C causes an error message
+- Piping scripts into other commands and then interrupting them with Ctrl+C causes an error message (shown below)>  This only occurs when you attempt to print text inside the KeyboardInterrupt exception:
+
+  ```
+  close failed in file object destructor:
+  sys.excepthook is missing
+  lost sys.stderr
+  ```
 
 ## General Usage
 
