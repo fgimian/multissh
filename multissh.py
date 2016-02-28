@@ -12,7 +12,6 @@
 # paramiko-expect library.
 #
 import sys
-sys.path.append('lib')
 import multiprocessing
 import signal
 import paramiko
@@ -20,43 +19,39 @@ import Crypto.Random
 
 
 class MultiSSHRunner:
-    """This class provides a way to run commands and tail logs in parallel
-    across multiple servers."""
+    """
+    This class provides a way to run commands and tail logs in parallel
+    across multiple servers.
+
+    :param processes: Number of concurrent processes to run at the same time
+                      (e.g. if this was set to 2 and you had 5 servers, then
+                      the commands would be run in 3 batches)
+    """
 
     def __init__(self, processes=None):
-        """The constructor for our MultiSSHRunner class.
-
-        Keyword arguments:
-        processes -- Number of concurrent processes to run at the same time
-                     (e.g. if this was set to 2 and you had 5 servers, then
-                     the commands would be run in 3 batches)
-
-        """
         self.processes = processes
         self.job_details = []
 
-    def add_ssh_job(self, hostname, username=None, password=None, command=None,
-                    interaction=None, key_filename=None, connect_timeout=60):
-        """This function adds a job to the SSH job list.
+    def add_ssh_job(
+        self, hostname, username=None, password=None, command=None,
+        interaction=None, key_filename=None, connect_timeout=60
+    ):
+        """
+        This function adds a job to the SSH job list.  Please note that one
+        of command or interaction parameters are required.
 
-        Arguments:
-        hostname -- The hostname of the server
-        command or interaction -- See below, one of these is mandatory
-
-        Keyword arguments:
-        username -- The username to authenticate with
-        password -- The password or passphrase to authenticate with
-        command -- Option 1: The command to run either as a string or a list
-                   of commands
-        interaction -- Option 2: An interaction function which will take
-                       control of the SSH Client.  The interaction function
-                       prototype has to be:
-                       def example_function(client, hostname)
-        key_filename -- The SSH key file location
-        connect_timeout -- The connection timeout in seconds
-
-        Raises:
-        Exception -- Raised if no command or interaction is provided
+        :param hostname: The hostname of the server
+        :param username: The username to authenticate with
+        :param password: The password or passphrase to authenticate with
+        :param command: The command to run either as a string or a list
+                        of commands
+        :param interaction: An interaction function which will take
+                            control of the SSH Client.  The interaction
+                            function prototype has to be:
+                            def example_function(client, hostname)
+        :param key_filename: The SSH key file location
+        :param connect_timeout: The connection timeout in seconds
+        :raises: Exception if no command or interaction is provided
 
         """
         if command or interaction:
@@ -68,16 +63,15 @@ class MultiSSHRunner:
         else:
             raise Exception(
                 'Job command information was missing and therefore the job '
-                'could not be added')
+                'could not be added'
+            )
 
     def run(self):
-        """This function starts the SSH jobs in parallel.
-
-        Returns:
-        A list of outputs from each SSH process
-
         """
+        Starts the SSH jobs in parallel.
 
+        :return: A list of outputs from each SSH process
+        """
         def _init_pool():
             # Workaround: Run the atfork function each time we create a
             # connection to avoid the following errors:
@@ -91,7 +85,8 @@ class MultiSSHRunner:
         # Create our multiprocessing workers ensuring we don't waste workers
         pool = multiprocessing.Pool(
             processes=min(self.processes, len(self.job_details)),
-            initializer=_init_pool)
+            initializer=_init_pool
+        )
         try:
             # Create a list of jobs by appending each process to the list
             jobs = []
@@ -118,23 +113,21 @@ class MultiSSHRunner:
 
 
 def _run_job(job_detail):
-    """Here is the function run in each thread which uses paramiko to run the
+    """
+    Here is the function run in each thread which uses paramiko to run the
     appropriate command or interaction.  This must be outside the class as
     multiprocessing can't handle a function within a class for its threads.
 
-    Arguments:
-    job_detail -- A dict with all the information relating to the job, the
-                  dict is formatted as follows:
-                  {'hostname': hostname, 'username': username,
-                   'password': password, 'command': command,
-                   'interaction': interaction, 'key_filename': key_filename,
-                   'connect_timeout': connect_timeout}
-
-    Returns:
-    - None: If the command fails
-    - (return_code, stdout, stderr): If a single command has been sent through
-    - List of tuples (as above): If multiple commands were sent through
-
+    :param job_detail: A dict with all the information relating to the job,
+                       the dict is formatted as follows:
+                       {'hostname': hostname, 'username': username,
+                        'password': password, 'command': command,
+                        'interaction': interaction,
+                        'key_filename': key_filename,
+                        'connect_timeout': connect_timeout}
+    :return: None if the command fails, (return_code, stdout, stderr) if a
+             single command has been sent through or a list of tuples
+             (as above) if multiple commands were sent through
     """
     try:
         # Create a new SSH client object
@@ -149,7 +142,8 @@ def _run_job(job_detail):
             timeout=job_detail['connect_timeout'],
             hostname=job_detail['hostname'],
             key_filename=job_detail['key_filename'],
-            username=job_detail['username'], password=job_detail['password'])
+            username=job_detail['username'], password=job_detail['password']
+        )
 
         # Run a single command
         if job_detail['command'] and isinstance(job_detail['command'], str):

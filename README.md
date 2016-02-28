@@ -4,10 +4,10 @@ Here's my little take on multiprocessing and Paramiko.  I have huge respect and 
 
 So the obvious question, why another library to do the same thing?  Heres where Multi-SSH stands apart:
 
-- This library is completely abstract and made to run on Cisco IOS, Unix and any other device which supports SSH.  There are no Unix-specific commands or interactions used.
-- The library allows integration with my paramiko-expect library, allowing complex interactions with servers.
-- The library is made to be integrated with scripts and doesn't rely on config files for storing server names and other information.  The user is requested to perform that task themselves via JSON or similar.
-- The library implements tailing of a file across multiple servers in one session.
+* This library is completely abstract and made to run on Cisco IOS, Unix and any other device which supports SSH.  There are no Unix-specific commands or interactions used.
+* The library allows integration with my paramiko-expect library, allowing complex interactions with servers.
+* The library is made to be integrated with scripts and doesn't rely on config files for storing server names and other information.  The user is requested to perform that task themselves via JSON or similar.
+* The library implements tailing of a file across multiple servers in one session.
 
 ## Known Issues
 
@@ -51,7 +51,7 @@ for device, output in zip(devices, outputs):
         print device, 'Command did not run successfully'
     # Otherwise, we didn't connect successfully
     else:
-        print device, 'Couldn\'t connect to this server'
+        print device, "Couldn't connect to this server"
 ```
 
 ## Custom Interactions

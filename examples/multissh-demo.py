@@ -7,14 +7,11 @@
 #
 # This script demonstrates the MultiSSHRunner class in the multi-ssh library
 #
-import sys
-sys.path.append('lib')
 import traceback
 from multissh import MultiSSHRunner
 
 
 def main():
-
     # Set login credentials and the command to run
     connect_timeout = 30
     devices = ['server1', 'server2', 'server3']
@@ -51,7 +48,7 @@ def main():
                 print device, 'Command did not run successfully'
             # Otherwise, we didn't connect successfully
             else:
-                print device, 'Couldn\'t connect to this server'
+                print device, "Couldn't connect to this server"
     except KeyboardInterrupt:
         pass
     except:

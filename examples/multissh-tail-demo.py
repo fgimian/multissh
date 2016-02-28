@@ -8,8 +8,6 @@
 # This script demonstrates the MultiSSHRunner class in the multi-ssh library
 # tailing a file on multiple servers
 #
-import sys
-sys.path.append('lib')
 import traceback
 import paramikoe
 from multissh import MultiSSHRunner
