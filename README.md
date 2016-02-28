@@ -9,6 +9,14 @@ So the obvious question, why another library to do the same thing?  Heres where 
 * The library is made to be integrated with scripts and doesn't rely on config files for storing server names and other information.  The user is requested to perform that task themselves via JSON or similar.
 * The library implements tailing of a file across multiple servers in one session.
 
+## Installation ##
+
+To install multi-ssh, simply run the following at your prompt:
+
+``` bash
+pip install git+https://github.com/fgimian/multi-ssh.git
+```
+
 ## Known Issues
 
 Unfortunately, there are a few outstanding issues which require resolution:

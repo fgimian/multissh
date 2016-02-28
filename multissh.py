@@ -18,7 +18,7 @@ import paramiko
 import Crypto.Random
 
 
-class MultiSSHRunner:
+class MultiSSHRunner(object):
     """
     This class provides a way to run commands and tail logs in parallel
     across multiple servers.
