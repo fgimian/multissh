@@ -14,7 +14,7 @@ from multissh import MultiSSHRunner
 
 
 def server_interaction(client, hostname):
-    """The server interaction function"""
+    """The server interaction function."""
     prompt = 'fots@fotsies-ubuntu-testlab:~\$ '
 
     # Start a client interaction using the paramiko-expect class

@@ -14,7 +14,7 @@ from multissh import MultiSSHRunner
 
 
 def tail_authlog(client, hostname):
-    """The tail interaction function"""
+    """The tail interaction function."""
     prompt = 'fots@fotsies-ubuntu-testlab:~\$ '
     line_prefix = hostname + ': '
 

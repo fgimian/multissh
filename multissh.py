@@ -52,7 +52,6 @@ class MultiSSHRunner(object):
         :param key_filename: The SSH key file location
         :param connect_timeout: The connection timeout in seconds
         :raises: Exception if no command or interaction is provided
-
         """
         if command or interaction:
             self.job_details.append(
