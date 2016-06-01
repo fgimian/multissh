@@ -9,6 +9,9 @@ Multi-SSH
 .. image:: https://raw.githubusercontent.com/fgimian/multi-ssh/master/images/multissh-logo.png
    :alt: Multi-SSH Logo
 
+Artwork courtesy of `Open Clip Art
+Library <https://openclipart.org/detail/193012/man-working-at-computers>`_
+
 Introduction
 ------------
 
