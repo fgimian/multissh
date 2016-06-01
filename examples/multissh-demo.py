@@ -38,6 +38,7 @@ def main():
         for device, output in zip(devices, outputs):
             if output:
                 return_code, stdout, stderr = output
+
             # Check the return code was 0 (successful) and something was
             # returned in stdout
             if output and stdout and return_code == 0:
