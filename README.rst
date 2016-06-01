@@ -4,9 +4,9 @@ Multi-SSH
 |License|
 
 .. |License| image:: https://img.shields.io/badge/license-MIT-blue.svg
-   :target: https://github.com/fgimian/multi-ssh/blob/master/LICENSE
+   :target: https://github.com/fgimian/multissh/blob/master/LICENSE
 
-.. image:: https://raw.githubusercontent.com/fgimian/multi-ssh/master/images/multissh-logo.png
+.. image:: https://raw.githubusercontent.com/fgimian/multissh/master/images/multissh-logo.png
    :alt: Multi-SSH Logo
 
 Artwork courtesy of `Open Clip Art
@@ -37,14 +37,14 @@ where Multi-SSH stands apart:
 Quick Start
 -----------
 
-To install multi-ssh, simply run the following at your prompt:
+To install Multi-SSH, simply run the following at your prompt:
 
 .. code:: bash
 
-    pip install git+https://github.com/fgimian/multi-ssh.git
+    pip install git+https://github.com/fgimian/multissh.git
 
 Here's how we can use the library (please see
-`multissh-demo.py <https://github.com/fgimian/multi-ssh/blob/master/examples/multissh-demo.py>`_
+`multissh-demo.py <https://github.com/fgimian/multissh/blob/master/examples/multissh-demo.py>`_
 for the complete code):
 
 .. code:: python
@@ -80,7 +80,7 @@ for the complete code):
 As well as running basic commands, Multi-SSH also supports custom interactions.
 A function (such as that shown below) can be written and passed into the
 add_ssh_job function via the ``interaction`` variable (see
-`multissh-interact-demo.py <https://github.com/fgimian/multi-ssh/blob/master/examples/multissh-demo.py>`_
+`multissh-interact-demo.py <https://github.com/fgimian/multissh/blob/master/examples/multissh-demo.py>`_
 for the complete code):
 
 .. code:: python
@@ -114,7 +114,7 @@ Similar to that above, you may use the special tail function to tail a
 log on multiple servers in the one session. Gone are the days of logging
 into 10 web servers to tail the apache access logs during a fault!
 Here's how the interact function looks (full code listing is in
-`multissh-tail-demo.py <https://github.com/fgimian/multi-ssh/blob/master/examples/multissh-tail-demo.py>`_):
+`multissh-tail-demo.py <https://github.com/fgimian/multissh/blob/master/examples/multissh-tail-demo.py>`_):
 
 .. code:: python
 
@@ -135,7 +135,7 @@ License
 -------
 
 Multi-SSH is released under the **MIT** license. Please see the
-`LICENSE <https://github.com/fgimian/multi-ssh/blob/master/LICENSE>`_
+`LICENSE <https://github.com/fgimian/multissh/blob/master/LICENSE>`_
 file for more details.
 
 TODO

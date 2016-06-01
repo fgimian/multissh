@@ -7,9 +7,9 @@ with open('README.rst') as f:
 
 
 setup(
-    name='multi-ssh',
+    name='multissh',
     version='0.1',
-    url='https://github.com/fgimian/multi-ssh',
+    url='https://github.com/fgimian/multissh',
     license='MIT',
     author='Fotis Gimian',
     author_email='fgimiansoftware@gmail.com',

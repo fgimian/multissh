@@ -5,7 +5,7 @@
 # Written by Fotis Gimian
 # http://github.com/fgimian
 #
-# This script demonstrates the MultiSSHRunner class in the multi-ssh library
+# This script demonstrates the MultiSSHRunner class in the Multi-SSH library
 #
 import traceback
 from multissh import MultiSSHRunner

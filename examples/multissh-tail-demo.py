@@ -5,7 +5,7 @@
 # Written by Fotis Gimian
 # http://github.com/fgimian
 #
-# This script demonstrates the MultiSSHRunner class in the multi-ssh library
+# This script demonstrates the MultiSSHRunner class in the Multi-SSH library
 # tailing a file on multiple servers
 #
 import traceback
